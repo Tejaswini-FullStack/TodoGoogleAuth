@@ -1,0 +1,62 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Logged out</title>
+</head>
+<body>
+    <h2>You have been logged out.</h2>
+    <a href="/accounts/login/">Login Again</a>
+</body>
+</html> {% endcomment %}
+
+{% comment %} 
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logged Out</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<nav>
+    <h2>TODO App</h2>
+</nav>
+
+<div class="container">
+    <h1>You have been logged out</h1>
+    <a class="login-btn" href="/accounts/login/">Login Again</a>
+</div>
+
+</body>
+</html>
+ {% endcomment %}
+
+
+ {% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<nav>
+    <h2>TODO App</h2>
+</nav>
+
+<div class="container">
+    <h1>Are you sure you want to logout?</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button class="delete-btn">Logout</button>
+    </form>
+
+    <br>
+    <a href="/">Cancel</a>
+</div>
+
+</body>
+</html>

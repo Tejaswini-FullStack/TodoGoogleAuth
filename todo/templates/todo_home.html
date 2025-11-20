@@ -1,0 +1,128 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Your Tasks</title>
+</head>
+<body>
+
+<h1>Your TODO List</h1>
+
+<p>Welcome {{ user.username }} 👋</p>
+
+<a href="/accounts/logout/">Logout</a>
+
+<hr>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="task" placeholder="Enter a task">
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<h2>Your Tasks</h2>
+<ul>
+    {% for t in todos %}
+        <li>{{ t.task }}</li>
+    {% empty %}
+        <p>No tasks yet.</p>
+    {% endfor %}
+</ul>
+{% for t in todos %}
+    <p>
+        {{ t.task }}
+        <a href="{% url 'update-task' t.id %}">Edit</a>
+        <a href="{% url 'delete-task' t.id %}">Delete</a>
+    </p>
+{% endfor %}
+
+</body>
+</html> {% endcomment %}
+
+{% comment %} {% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<nav>
+    <h2>TODO App</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/accounts/logout/">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Your Tasks</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="task" placeholder="Enter new task">
+        <button type="submit">Add</button>
+    </form>
+
+    <br>
+
+    {% for t in todos %}
+        <div class="todo-item">
+            <span>{{ t.task }}</span>
+            <div>
+                <a href="/todo/update/{{ t.id }}/">Edit</a>
+                <a class="delete-btn" href="/todo/delete/{{ t.id }}/">Delete</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>No tasks added yet.</p>
+    {% endfor %}
+</div>
+
+</body>
+</html> {% endcomment %}
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Tasks</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<nav>
+    <h2>TODO App</h2>
+    <div>
+        <a href="/">Home</a>
+        <a href="/accounts/logout/">Logout</a>
+    </div>
+</nav>
+
+<div class="container">
+    <h1>Your Tasks</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="task" placeholder="Enter new task">
+        <button type="submit">Add</button>
+    </form>
+
+    <br>
+
+    {% for t in todos %}
+        <div class="todo-item">
+            <span>{{ t.task }}</span>
+            <div>
+                <a href="/todo/update/{{ t.id }}/">Edit</a>
+                <a class="delete-btn" href="/todo/delete/{{ t.id }}/">Delete</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>No tasks added yet.</p>
+    {% endfor %}
+</div>
+
+</body>
+</html>

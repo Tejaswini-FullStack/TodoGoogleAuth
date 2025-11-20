@@ -1,0 +1,72 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Update Task</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="task" value="{{ todo.task }}">
+    <button type="submit">Update</button>
+</form>
+
+</body>
+</html> {% endcomment %}
+
+
+{% comment %} {% load static %}
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<nav>
+    <h2>TODO App</h2>
+    <a href="/todo/">Back</a>
+</nav>
+
+<div class="container">
+    <h1>Edit Task</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="task" value="{{ todo.task }}">
+        <button type="submit">Update</button>
+    </form>
+</div>
+
+</body>
+</html> {% endcomment %}
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<nav>
+    <h2>TODO App</h2>
+    <a href="/todo/">Back</a>
+</nav>
+
+<div class="container">
+    <h1>Edit Task</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="task" value="{{ todo.task }}">
+        <button type="submit">Update</button>
+    </form>
+</div>
+
+</body>
+</html>
